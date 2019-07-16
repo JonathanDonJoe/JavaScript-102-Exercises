@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JavaScript 102 Exercises</title>
+</head>
+<body>
+    <script>
+        // 1. Print Numbers
+        function printNumbers(start,end){
+            let a=''
+            for (;start<=end;start++){
+                a+=start
+                a+= ' '
+            }
+            console.log(a)
+        }
+        // printNumbers(2,8)
+
+        function printNumbers2(start,end){
+            let a=''
+            while (end >= start){
+                a+=start
+                a+= ' '
+                start++;
+            }
+            console.log(a)
+        }
+        // printNumbers2(4,20)
+
+        // 2. Print a Square
+        function printSquare(size){
+            var i=0, j=0;
+            var stars='';
+            for (;i<size;i++){
+                stars+='*';
+            }
+            for(;j<size;j++){
+                console.log(stars)
+            }
+        }
+        // printSquare(5)
+        
+        // 3. Print a box
+        function printBox(width, height){
+            var width2 = width - 1;
+            var height2 = height - 1;
+            var i=0;
+            var stars;
+            for (;i<height;i++){
+                var j=0;
+                stars='';
+                for(;j<width;j++){
+                    i === 0 || i === height2
+                        ? stars += '*'
+                        :j === 0 || j === width2
+                            ? stars += '*'
+                            : stars += ' '; 
+                }
+                console.log(stars);
+            }
+        }
+        // printBox(8,10)
+
+        // 4. Print a Banner
+        function printBanner(text){
+            var bannerLen = text.length +2
+            var i=0, j=0, stars="";
+            for (;j<bannerLen;j++){
+                stars += "*";
+            }
+            for (;i<3;i++){
+                i == 0 || i == 2
+                    ? console.log(stars)
+                    : console.log('*' + text + '*')
+            }
+        }
+        // printBanner("Hello World")
+
+        // 5. Factor a Number
+        function Factors(number){
+            const factors=[];
+            var i = 1;
+            for (;i<=number;i++){
+                number%i ===0
+                    ? factors.push(i)
+                    : null
+            }
+            factors.forEach(factor=>console.log(factor))
+        }
+        // Factors(100)
+
+        // 6. Caesar Cipher
+        function cipher(word, offset){
+            let newWord='';
+            var i=0; 
+            var len=word.length;
+            for (;i<len;i++){
+                charCode = word.charCodeAt(i);
+                if (charCode >=65 && charCode <= 90){
+                    if ((charCode + offset) > 90) {
+                        charCode-=26;
+                    }
+                }
+                if (charCode >=97 && charCode <= 122){
+                    if ((charCode + offset) > 122) {
+                        charCode-=26;
+                    }
+                }
+                if (charCode === 32){
+                    newWord += " "
+                } else {
+                    newWord += String.fromCharCode(charCode + offset);
+                }
+            }
+            console.log(newWord);
+        }
+        // cipher('Genius without education is like silver in the mine', 13)
+        
+        // 7. Caesar Cipher 2
+        function decipher(word, offset){
+            let newWord=''
+            var i=0; 
+            var len=word.length;
+            for (;i<len;i++){
+                charCode = word.charCodeAt(i);
+                charCodeOffset = charCode - offset;
+                if (charCode - offset < 65 && charCode !== 32){
+                    charCodeOffset+=26;
+                    }
+                if (charCode >= 97 && charCode - offset < 97 && charCode !== 32){
+                    charCodeOffset+=26;
+                    }
+                if (charCode === 32){
+                    newWord += " ";
+                } else {
+                    newWord += String.fromCharCode(charCodeOffset);
+                }
+            }
+            console.log(newWord);
+        }
+        // decipher('Travhf jvgubhg rqhpngvba vf yvxr fvyire va gur zvar', 13)
+        
+        // 8. Leetspeak
+        function leetspeak(word){
+            const leetObject = {'a':'4',"e":'3',"g":'6',"i":"1","o":'0',"s":"5","t":"7"};
+            let newWord = '';
+            const lowerWord=word.toLowerCase();
+            var i = 0;
+            var len = word.length;
+            // console.log(lowerWord)
+            for (;i<len;i++){
+                if (leetObject[lowerWord[i]]){
+                    newWord+= leetObject[lowerWord[i]];
+                }
+                else{
+                    newWord+= lowerWord[i];
+                }
+            }
+            console.log(newWord) ;
+        }
+        // leetspeak('Leetspeakforgermandummies')
+
+        // 9. Long-long Vowels
+        function longLongVowels(word){
+            const vowels=['a','e','i','o','u'];
+            let newWord = '';
+            const lowerWord = word.toLowerCase();
+            var i = 0;
+            var len = lowerWord.length;
+            for (;i<len;i++){
+                if (vowels.includes(lowerWord[i])){
+                    newWord += lowerWord[i];
+                    newWord += lowerWord[i];
+                    newWord += lowerWord[i];
+                    newWord += lowerWord[i];
+                    newWord += lowerWord[i];
+                } else {
+                    newWord += lowerWord[i];
+                }
+            }
+            console.log(newWord);
+        }
+        // longLongVowels('hellolO')
+
+        // 10. Sum the Numbers
+        function sumNumbers(numArray) {
+            var sum = 0;
+            var i = 0;
+            const len = numArray.length;
+            for (;i<len;i++) {
+                sum += parseInt(numArray[i])
+            }
+            console.log(sum);
+        }
+        // sumNumbers([1, 4, 8])
+
+        // 11. Just the Positives
+        function posFilter(num){
+            return num>0
+        }
+        function positiveNumbers(numArray){
+            // const newNumArray = [];
+            let i = 0;
+            const len = numArray.length;
+            newNumArray = numArray.filter(posFilter);
+            console.log(newNumArray)
+        }
+        // positiveNumbers([1, -3, 5, -3, 0, 8, 4, -3, -6])
+
+        // 12. Rock Paper Scissors
+        function rpsReturn(player1, player2){
+            const player1Lower = player1.toLowerCase();
+            const player2Lower = player2.toLowerCase();
+            if (player1Lower === player2Lower) {
+                return 'Draw';
+            }
+            if (player1Lower === 'rock'){
+                if(player2Lower === 'paper'){
+                    return 'Player 2'
+                } 
+                if(player2Lower === 'scissors')
+                    return 'Player 1'
+            }
+            if (player1Lower === 'paper'){
+                if(player2Lower === 'scissors'){
+                    return 'Player 2'
+                } 
+                if(player2Lower === 'rock')
+                    return 'Player 1'
+            }
+            if (player1Lower === 'scissors'){
+                if(player2Lower === 'rock'){
+                    return 'Player 2'
+                } 
+                if(player2Lower === 'paper')
+                    return 'Player 1'
+            }
+        }
+        function rockPaperScissors(player1, player2){
+            console.log(rpsReturn(player1, player2))
+        }
+        // rockPaperScissors('Paper','Scissors')
+
+        // 13. Tic Tac Toe
+        function ticTacToeTest(arr){
+            let test;
+            if(arr[0][0]){
+                test = arr[0][0]
+                if (test===arr[0][1] && test===arr[0][2] 
+                    || test === arr[1][0] && test === arr[2][0]
+                    ){
+                    return test
+                }
+            }
+            if(arr[2][2]){
+                test = arr[2][2]
+                if (test === arr[0][2] && test === arr[1][2] 
+                || test === arr[2][0] && test === arr[2][1]
+                ){
+                    return test
+                }
+            }
+            if(arr[1][1]){
+                test = arr[1][1]
+                if (test===arr[0][0] && test===arr[2][2] 
+                    || test === arr[2][0] && test === arr[0][2]
+                    || test === arr[1][0] && test === arr[1][3]
+                    || test === arr[0][1] && test === arr[2][1]
+                    ){
+                    return test
+                } else{
+                    return 'N/A'
+                }
+            }
+        }
+        function ticTacToe(arr){
+            console.log(ticTacToeTest(arr))
+        }
+        ticTacToe([
+            ['O', 'O', 'O'],
+            ['X', null, 'X'],
+            [null, 'X', null]
+            ])
+    </script>
+</body>
+</html>
