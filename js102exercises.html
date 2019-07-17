@@ -100,12 +100,12 @@
             for (;i<len;i++){
                 charCode = word.charCodeAt(i);
                 if (charCode >=65 && charCode <= 90){
-                    if ((charCode + offset) > 90) {
+                    while ((charCode + offset) > 90) {
                         charCode-=26;
                     }
                 }
                 if (charCode >=97 && charCode <= 122){
-                    if ((charCode + offset) > 122) {
+                    while ((charCode + offset) > 122) {
                         charCode-=26;
                     }
                 }
@@ -117,7 +117,7 @@
             }
             console.log(newWord);
         }
-        // cipher('Genius without education is like silver in the mine', 13)
+        // cipher('Genius without education is like silver in the mine', 185)
         
         // 7. Caesar Cipher 2
         function decipher(word, offset){
@@ -127,12 +127,15 @@
             for (;i<len;i++){
                 charCode = word.charCodeAt(i);
                 charCodeOffset = charCode - offset;
-                if (charCode - offset < 65 && charCode !== 32){
-                    charCodeOffset+=26;
+                if (charCode <=90 && charCode !==32){
+                    while (charCodeOffset  < 65){
+                        charCodeOffset+=26;
                     }
-                if (charCode >= 97 && charCode - offset < 97 && charCode !== 32){
-                    charCodeOffset+=26;
+                } else if (charCode >=97 &&  charCode <=122 && charCode !== 32){ 
+                    while (charCodeOffset  < 97){
+                        charCodeOffset+=26;
                     }
+                }
                 if (charCode === 32){
                     newWord += " ";
                 } else {
@@ -141,7 +144,7 @@
             }
             console.log(newWord);
         }
-        // decipher('Travhf jvgubhg rqhpngvba vf yvxr fvyire va gur zvar', 13)
+        // decipher('Jhqlxv zlwkrxw hgxfdwlrq lv olnh vloyhu lq wkh plqh', 185)
         
         // 8. Leetspeak
         function leetspeak(word){
@@ -279,11 +282,11 @@
         function ticTacToe(arr){
             console.log(ticTacToeTest(arr))
         }
-        ticTacToe([
-            ['O', 'O', 'O'],
-            ['X', null, 'X'],
-            [null, 'X', null]
-            ])
+        // ticTacToe([
+        //     ['O', 'O', 'O'],
+        //     ['X', null, 'X'],
+        //     [null, 'X', null]
+        //     ])
     </script>
 </body>
 </html>

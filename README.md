@@ -1,4 +1,5 @@
 Exercises: JavaScript 102
+
 Print Numbers
 Write a function printNumbers which is given a start number and an end number. It will print the numbers from one to the other, one per line:
 
@@ -39,19 +40,24 @@ Write a function printBanner which is given some text and prints a banner with a
 ****************************
 * Welcome to DigitalCrafts *
 ****************************
+
 Factor a Number
+
 Write a function factors which is given a number and returns an array containing all its factors. What are factors? https://www.khanacademy.org/math/pre-algebra/factors-multiples/divisibility-and-factors/v/finding-factors-of-a-number
 
 Caesar Cipher
+
 Write a function cipher which is given a string, an offset, and returns the Caesar cipher of the string.
 
 > cipher('Genius without education is like silver in the mine', 13)
 'Travhf jvgubhg rqhpngvba vf yvxr fvyire va gur zvar'
+
 Caesar Cipher 2
 Write a function decipher which is given a string, an offset, and returns the original message.
 
 > decipher('Travhf jvgubhg rqhpngvba vf yvxr fvyire va gur zvar', 13)
 'Genius without education is like silver in the mine'
+
 Leetspeak
 Write a function leetspeak which is given a string, and returns the leetspeak equivalent of the string. To convert text to its leetspeak version, make the following substitutions:
 
@@ -64,6 +70,7 @@ S => 5
 T => 7
 > leetspeak('Leet')
 l337
+
 Long-long Vowels
 Write a function, which is given a string, return the result of extending any long vowels to the length of 5.
 
@@ -73,11 +80,13 @@ Write a function, which is given a string, return the result of extending any lo
 'Cheeeeese'
 > longLongVowels('Man')
 'Man'
+
 Sum the numbers
 Write a function sumNumbers which is given an array of numbers and returns the sum of the numbers.
 
 > sumNumbers([1, 4, 8])
 13
+
 Just the positives
 Write a function positiveNumbers which is given an array of numbers and returns a new array containing only the positive numbers within the given array.
 
